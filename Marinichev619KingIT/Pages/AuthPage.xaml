@@ -1,0 +1,18 @@
+﻿<Page x:Class="Marinichev619KingIT.Pages.AuthPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Marinichev619KingIT.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AuthPage">
+
+    <Grid Background="White">
+        <PasswordBox x:Name="passwordUser" HorizontalAlignment="Center" ToolTip="Введите пароль" Margin="0,225,0,0" VerticalAlignment="Top" Width="120" Height="22"/>
+        <TextBox x:Name="loginUser" ToolTip="Введите почту" HorizontalAlignment="Center" Margin="0,180,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Height="22" TextChanged="loginUser_TextChanged"/>
+        <Label Content="Логин" HorizontalAlignment="Left" Margin="275,177,0,0" VerticalAlignment="Top"/>
+        <Label Content="Пароль" HorizontalAlignment="Left" Margin="275,222,0,0" VerticalAlignment="Top"/>
+        <Button Name="authBtn"  Content="Авторизиация" HorizontalAlignment="Center" Margin="0,274,0,0" VerticalAlignment="Top" Height="25" Width="100" Click="authBtn_Click"/>
+    </Grid>
+</Page>

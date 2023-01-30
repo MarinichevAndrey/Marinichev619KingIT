@@ -1,0 +1,745 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище Marinichev619KingITModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
+          <Property Name="Login" Type="nvarchar(max)" />
+          <Property Name="Password" Type="nvarchar(max)" />
+          <Property Name="IdRole" Type="int" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdGender" Type="int" />
+          <Property Name="Image" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pavilion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdShoppingCenter" Type="int" />
+          <Property Name="PovilionNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="NumberOfFloor" Type="int" />
+          <Property Name="IdStatusPavilion" Type="int" />
+          <Property Name="Square" Type="int" />
+          <Property Name="CostPerSqm" Type="money" />
+          <Property Name="ValueAddedRatio" Type="float" />
+        </EntityType>
+        <EntityType Name="Rent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdShoppingCenter" Type="int" />
+          <Property Name="IdEmployee" Type="int" />
+          <Property Name="PovilionNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdStatusRent" Type="int" />
+          <Property Name="RentStart" Type="date" />
+          <Property Name="RentEnd" Type="date" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6013: Первичный ключ в таблице или представлении "Marinichev619KingIT.dbo.Rent_Rentor" не определен, его не удалось вывести. Эта таблица или представление исключены. Чтобы использовать сущность, необходимо проверить схему, добавить правильные ключи и раскомментировать ее.
+        <EntityType Name="Rent_Rentor">
+          <Property Name="IdRent" Type="int" />
+          <Property Name="IdRentor" Type="int" />
+        </EntityType>-->
+        <EntityType Name="Rentor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ShoppingCenter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="IdShoppingCenterStatus" Type="int" />
+          <Property Name="PovilionNum" Type="int" />
+          <Property Name="IdCity" Type="int" />
+          <Property Name="Price" Type="money" />
+          <Property Name="ValueAddedRatio" Type="float" />
+          <Property Name="Floor" Type="int" />
+          <Property Name="Image" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="StatusPavilion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StatusRent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="StatusShoppingCenter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Employee_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="IdGender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pavilion_ShoppingCenter">
+          <End Role="ShoppingCenter" Type="Self.ShoppingCenter" Multiplicity="0..1" />
+          <End Role="Pavilion" Type="Self.Pavilion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShoppingCenter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pavilion">
+              <PropertyRef Name="IdShoppingCenter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pavilion_StatusPavilion">
+          <End Role="StatusPavilion" Type="Self.StatusPavilion" Multiplicity="0..1" />
+          <End Role="Pavilion" Type="Self.Pavilion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusPavilion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pavilion">
+              <PropertyRef Name="IdStatusPavilion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rent_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Rent" Type="Self.Rent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rent">
+              <PropertyRef Name="IdEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Ошибки, обнаруженные при создании:
+ошибка 6004: Невозможно найти таблицу "Marinichev619KingIT.dbo.Rent_Rentor", на которую ссылается связь.
+        <Association Name="FK_Rent_Rentor_Rent" />-->
+        <!--Ошибки, обнаруженные при создании:
+ошибка 6004: Невозможно найти таблицу "Marinichev619KingIT.dbo.Rent_Rentor", на которую ссылается связь.
+        <Association Name="FK_Rent_Rentor_Rentor" />-->
+        <Association Name="FK_Rent_ShoppingCenter">
+          <End Role="ShoppingCenter" Type="Self.ShoppingCenter" Multiplicity="0..1" />
+          <End Role="Rent" Type="Self.Rent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShoppingCenter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rent">
+              <PropertyRef Name="IdShoppingCenter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rent_StatusRent">
+          <End Role="StatusRent" Type="Self.StatusRent" Multiplicity="0..1" />
+          <End Role="Rent" Type="Self.Rent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusRent">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rent">
+              <PropertyRef Name="IdStatusRent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShoppingCenter_City">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="ShoppingCenter" Type="Self.ShoppingCenter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShoppingCenter">
+              <PropertyRef Name="IdCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShoppingCenter_StatusShoppingCenter">
+          <End Role="StatusShoppingCenter" Type="Self.StatusShoppingCenter" Multiplicity="0..1" />
+          <End Role="ShoppingCenter" Type="Self.ShoppingCenter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusShoppingCenter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShoppingCenter">
+              <PropertyRef Name="IdShoppingCenterStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище Marinichev619KingITModelContainer">
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pavilion" EntityType="Self.Pavilion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rent" EntityType="Self.Rent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rentor" EntityType="Self.Rentor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShoppingCenter" EntityType="Self.ShoppingCenter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusPavilion" EntityType="Self.StatusPavilion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusRent" EntityType="Self.StatusRent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusShoppingCenter" EntityType="Self.StatusShoppingCenter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Employee_Gender" Association="Self.FK_Employee_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Role" Association="Self.FK_Employee_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pavilion_ShoppingCenter" Association="Self.FK_Pavilion_ShoppingCenter">
+            <End Role="ShoppingCenter" EntitySet="ShoppingCenter" />
+            <End Role="Pavilion" EntitySet="Pavilion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pavilion_StatusPavilion" Association="Self.FK_Pavilion_StatusPavilion">
+            <End Role="StatusPavilion" EntitySet="StatusPavilion" />
+            <End Role="Pavilion" EntitySet="Pavilion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rent_Employee" Association="Self.FK_Rent_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Rent" EntitySet="Rent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rent_ShoppingCenter" Association="Self.FK_Rent_ShoppingCenter">
+            <End Role="ShoppingCenter" EntitySet="ShoppingCenter" />
+            <End Role="Rent" EntitySet="Rent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rent_StatusRent" Association="Self.FK_Rent_StatusRent">
+            <End Role="StatusRent" EntitySet="StatusRent" />
+            <End Role="Rent" EntitySet="Rent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShoppingCenter_City" Association="Self.FK_ShoppingCenter_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="ShoppingCenter" EntitySet="ShoppingCenter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShoppingCenter_StatusShoppingCenter" Association="Self.FK_ShoppingCenter_StatusShoppingCenter">
+            <End Role="StatusShoppingCenter" EntitySet="StatusShoppingCenter" />
+            <End Role="ShoppingCenter" EntitySet="ShoppingCenter" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Marinichev619KingITModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ShoppingCenter" Relationship="Self.FK_ShoppingCenter_City" FromRole="City" ToRole="ShoppingCenter" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdRole" Type="Int32" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdGender" Type="Int32" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Gender" Relationship="Self.FK_Employee_Gender" FromRole="Employee" ToRole="Gender" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_Employee_Role" FromRole="Employee" ToRole="Role" />
+          <NavigationProperty Name="Rent" Relationship="Self.FK_Rent_Employee" FromRole="Employee" ToRole="Rent" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_Gender" FromRole="Gender" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Pavilion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdShoppingCenter" Type="Int32" />
+          <Property Name="PovilionNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NumberOfFloor" Type="Int32" />
+          <Property Name="IdStatusPavilion" Type="Int32" />
+          <Property Name="Square" Type="Int32" />
+          <Property Name="CostPerSqm" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ValueAddedRatio" Type="Double" />
+          <NavigationProperty Name="ShoppingCenter" Relationship="Self.FK_Pavilion_ShoppingCenter" FromRole="Pavilion" ToRole="ShoppingCenter" />
+          <NavigationProperty Name="StatusPavilion" Relationship="Self.FK_Pavilion_StatusPavilion" FromRole="Pavilion" ToRole="StatusPavilion" />
+        </EntityType>
+        <EntityType Name="Rent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdShoppingCenter" Type="Int32" />
+          <Property Name="IdEmployee" Type="Int32" />
+          <Property Name="PovilionNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdStatusRent" Type="Int32" />
+          <Property Name="RentStart" Type="DateTime" Precision="0" />
+          <Property Name="RentEnd" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Rent_Employee" FromRole="Rent" ToRole="Employee" />
+          <NavigationProperty Name="ShoppingCenter" Relationship="Self.FK_Rent_ShoppingCenter" FromRole="Rent" ToRole="ShoppingCenter" />
+          <NavigationProperty Name="StatusRent" Relationship="Self.FK_Rent_StatusRent" FromRole="Rent" ToRole="StatusRent" />
+        </EntityType>
+        <EntityType Name="Rentor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_Role" FromRole="Role" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="ShoppingCenter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdShoppingCenterStatus" Type="Int32" />
+          <Property Name="PovilionNum" Type="Int32" />
+          <Property Name="IdCity" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ValueAddedRatio" Type="Double" />
+          <Property Name="Floor" Type="Int32" />
+          <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="City" Relationship="Self.FK_ShoppingCenter_City" FromRole="ShoppingCenter" ToRole="City" />
+          <NavigationProperty Name="Pavilion" Relationship="Self.FK_Pavilion_ShoppingCenter" FromRole="ShoppingCenter" ToRole="Pavilion" />
+          <NavigationProperty Name="Rent" Relationship="Self.FK_Rent_ShoppingCenter" FromRole="ShoppingCenter" ToRole="Rent" />
+          <NavigationProperty Name="StatusShoppingCenter" Relationship="Self.FK_ShoppingCenter_StatusShoppingCenter" FromRole="ShoppingCenter" ToRole="StatusShoppingCenter" />
+        </EntityType>
+        <EntityType Name="StatusPavilion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Pavilion" Relationship="Self.FK_Pavilion_StatusPavilion" FromRole="StatusPavilion" ToRole="Pavilion" />
+        </EntityType>
+        <EntityType Name="StatusRent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Rent" Relationship="Self.FK_Rent_StatusRent" FromRole="StatusRent" ToRole="Rent" />
+        </EntityType>
+        <EntityType Name="StatusShoppingCenter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ShoppingCenter" Relationship="Self.FK_ShoppingCenter_StatusShoppingCenter" FromRole="StatusShoppingCenter" ToRole="ShoppingCenter" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_ShoppingCenter_City">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="ShoppingCenter" Type="Self.ShoppingCenter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShoppingCenter">
+              <PropertyRef Name="IdCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="IdGender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rent_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Rent" Type="Self.Rent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rent">
+              <PropertyRef Name="IdEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pavilion_ShoppingCenter">
+          <End Role="ShoppingCenter" Type="Self.ShoppingCenter" Multiplicity="0..1" />
+          <End Role="Pavilion" Type="Self.Pavilion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShoppingCenter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pavilion">
+              <PropertyRef Name="IdShoppingCenter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pavilion_StatusPavilion">
+          <End Role="StatusPavilion" Type="Self.StatusPavilion" Multiplicity="0..1" />
+          <End Role="Pavilion" Type="Self.Pavilion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusPavilion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pavilion">
+              <PropertyRef Name="IdStatusPavilion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rent_ShoppingCenter">
+          <End Role="ShoppingCenter" Type="Self.ShoppingCenter" Multiplicity="0..1" />
+          <End Role="Rent" Type="Self.Rent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShoppingCenter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rent">
+              <PropertyRef Name="IdShoppingCenter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rent_StatusRent">
+          <End Role="StatusRent" Type="Self.StatusRent" Multiplicity="0..1" />
+          <End Role="Rent" Type="Self.Rent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusRent">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rent">
+              <PropertyRef Name="IdStatusRent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShoppingCenter_StatusShoppingCenter">
+          <End Role="StatusShoppingCenter" Type="Self.StatusShoppingCenter" Multiplicity="0..1" />
+          <End Role="ShoppingCenter" Type="Self.ShoppingCenter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusShoppingCenter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShoppingCenter">
+              <PropertyRef Name="IdShoppingCenterStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Marinichev619KingITEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="City" EntityType="Self.City" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" />
+          <EntitySet Name="Pavilion" EntityType="Self.Pavilion" />
+          <EntitySet Name="Rent" EntityType="Self.Rent" />
+          <EntitySet Name="Rentor" EntityType="Self.Rentor" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="ShoppingCenter" EntityType="Self.ShoppingCenter" />
+          <EntitySet Name="StatusPavilion" EntityType="Self.StatusPavilion" />
+          <EntitySet Name="StatusRent" EntityType="Self.StatusRent" />
+          <EntitySet Name="StatusShoppingCenter" EntityType="Self.StatusShoppingCenter" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK_ShoppingCenter_City" Association="Self.FK_ShoppingCenter_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="ShoppingCenter" EntitySet="ShoppingCenter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Gender" Association="Self.FK_Employee_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Role" Association="Self.FK_Employee_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rent_Employee" Association="Self.FK_Rent_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Rent" EntitySet="Rent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pavilion_ShoppingCenter" Association="Self.FK_Pavilion_ShoppingCenter">
+            <End Role="ShoppingCenter" EntitySet="ShoppingCenter" />
+            <End Role="Pavilion" EntitySet="Pavilion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pavilion_StatusPavilion" Association="Self.FK_Pavilion_StatusPavilion">
+            <End Role="StatusPavilion" EntitySet="StatusPavilion" />
+            <End Role="Pavilion" EntitySet="Pavilion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rent_ShoppingCenter" Association="Self.FK_Rent_ShoppingCenter">
+            <End Role="ShoppingCenter" EntitySet="ShoppingCenter" />
+            <End Role="Rent" EntitySet="Rent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rent_StatusRent" Association="Self.FK_Rent_StatusRent">
+            <End Role="StatusRent" EntitySet="StatusRent" />
+            <End Role="Rent" EntitySet="Rent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShoppingCenter_StatusShoppingCenter" Association="Self.FK_ShoppingCenter_StatusShoppingCenter">
+            <End Role="StatusShoppingCenter" EntitySet="StatusShoppingCenter" />
+            <End Role="ShoppingCenter" EntitySet="ShoppingCenter" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Marinichev619KingITModelContainer" CdmEntityContainer="Marinichev619KingITEntities">
+          <EntitySetMapping Name="City">
+            <EntityTypeMapping TypeName="Marinichev619KingITModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="Marinichev619KingITModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="IdGender" ColumnName="IdGender" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gender">
+            <EntityTypeMapping TypeName="Marinichev619KingITModel.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pavilion">
+            <EntityTypeMapping TypeName="Marinichev619KingITModel.Pavilion">
+              <MappingFragment StoreEntitySet="Pavilion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdShoppingCenter" ColumnName="IdShoppingCenter" />
+                <ScalarProperty Name="PovilionNum" ColumnName="PovilionNum" />
+                <ScalarProperty Name="NumberOfFloor" ColumnName="NumberOfFloor" />
+                <ScalarProperty Name="IdStatusPavilion" ColumnName="IdStatusPavilion" />
+                <ScalarProperty Name="Square" ColumnName="Square" />
+                <ScalarProperty Name="CostPerSqm" ColumnName="CostPerSqm" />
+                <ScalarProperty Name="ValueAddedRatio" ColumnName="ValueAddedRatio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rent">
+            <EntityTypeMapping TypeName="Marinichev619KingITModel.Rent">
+              <MappingFragment StoreEntitySet="Rent">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdShoppingCenter" ColumnName="IdShoppingCenter" />
+                <ScalarProperty Name="IdEmployee" ColumnName="IdEmployee" />
+                <ScalarProperty Name="PovilionNum" ColumnName="PovilionNum" />
+                <ScalarProperty Name="IdStatusRent" ColumnName="IdStatusRent" />
+                <ScalarProperty Name="RentStart" ColumnName="RentStart" />
+                <ScalarProperty Name="RentEnd" ColumnName="RentEnd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rentor">
+            <EntityTypeMapping TypeName="Marinichev619KingITModel.Rentor">
+              <MappingFragment StoreEntitySet="Rentor">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="Marinichev619KingITModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShoppingCenter">
+            <EntityTypeMapping TypeName="Marinichev619KingITModel.ShoppingCenter">
+              <MappingFragment StoreEntitySet="ShoppingCenter">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="IdShoppingCenterStatus" ColumnName="IdShoppingCenterStatus" />
+                <ScalarProperty Name="PovilionNum" ColumnName="PovilionNum" />
+                <ScalarProperty Name="IdCity" ColumnName="IdCity" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ValueAddedRatio" ColumnName="ValueAddedRatio" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusPavilion">
+            <EntityTypeMapping TypeName="Marinichev619KingITModel.StatusPavilion">
+              <MappingFragment StoreEntitySet="StatusPavilion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusRent">
+            <EntityTypeMapping TypeName="Marinichev619KingITModel.StatusRent">
+              <MappingFragment StoreEntitySet="StatusRent">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusShoppingCenter">
+            <EntityTypeMapping TypeName="Marinichev619KingITModel.StatusShoppingCenter">
+              <MappingFragment StoreEntitySet="StatusShoppingCenter">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Marinichev619KingITModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

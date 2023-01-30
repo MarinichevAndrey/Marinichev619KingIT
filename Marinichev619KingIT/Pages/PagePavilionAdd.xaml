@@ -1,0 +1,45 @@
+﻿<Page x:Class="Marinichev619KingIT.Pages.PagePavilionAdd"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Marinichev619KingIT.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PagePavilionAdd">
+
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <StackPanel Grid.Column="0" HorizontalAlignment="Right" Margin="0,40,0,0">
+            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Right" Width="140" FontSize="14" Margin="0,20,0,0" Text="Номер этажа"/>
+            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Right" Width="140" FontSize="14" Margin="0,20,0,0" Text="Номер павильона"/>
+            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Right" Width="140" FontSize="14" Margin="0,20,0,0" Text="Статус"/>
+            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Right" Width="140" FontSize="14" Margin="0,20,0,0" Text="Площадь"/>
+            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Left"  Width="140" FontSize="14" Margin="0,20,0,0" Text="Коэф. доб. стоимости павильона"/>
+            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Left" Width="140" Margin="0,20,0,0" FontSize="14" Text="Стоимость кв. м."/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="2" HorizontalAlignment="Left" Margin="0,40,0,0">
+            <TextBox x:Name="tbfloor" TextWrapping="Wrap" Text="" Width="140" Height="25" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="0,20,0,0" FontSize="14"/>
+            <TextBox x:Name="tbPavilionNumber" TextWrapping="Wrap" Text="" Width="140" Height="25" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="0,10,0,0" FontSize="14"/>
+            <ComboBox x:Name="cmbstatus" Margin="0,15,0,0" Width="140" Height="25" VerticalContentAlignment="Center" FontSize="14">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Status}" VerticalAlignment="Center"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBox x:Name="tbsquare" TextWrapping="Wrap" Text="" Width="140" Height="25" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="0,15,0,0" FontSize="14"/>
+            <TextBox x:Name="tbvalueaddedratio" TextWrapping="Wrap" Text="" Width="140" Height="25" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="0,20,0,0" FontSize="14"/>
+            <TextBox x:Name="tbprice" TextWrapping="Wrap" Text="" Width="140" Height="25" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="0,25,0,0" FontSize="14"/>
+        </StackPanel>
+
+        <Button x:Name="btnAdd" Click="btnAdd_Click" Content="Создать" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="25" FontSize="14" Width="100" Margin="10,0,0,10"/>
+        <Button x:Name="btnCancel" Click="btnCancel_Click" Content="Отмена" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="25" FontSize="14" Width="100" Grid.Column="2" Margin="0,0,10,10"/>
+    </Grid>
+</Page>
